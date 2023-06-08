@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # node-redis-mysql-project
 =======
 # react-node-redis-mysql-demo
@@ -32,4 +32,4 @@ $ cd app
 $ npm install
 $ npm run dev
 ```
->>>>>>> 88e9813 (initial commit)
+
