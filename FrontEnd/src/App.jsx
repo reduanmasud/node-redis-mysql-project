@@ -5,13 +5,13 @@ import { CreateNotePage } from './pages/CreateNotePage'
 
 
 const getNotes = async () => {
-  const resp = await fetch(`http://localhost:5000/notes`);
+  const resp = await fetch(`http://localhost:3456/notes`);
   const data = await resp.json();
   return data;
 };
 
 const makeNote = async (title, text) => {
-  const res = await fetch(`http://localhost:5000/createNote`,
+  const res = await fetch(`http://localhost:3456/createNote`,
   {
     method: "POST",
     headers: {"Content-Type": "application/json"},
