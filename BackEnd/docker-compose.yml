@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    image: 'mysql'
+    container_name: db
+    ports:
+      - '6033:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'pass'
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: 'notesDB'
+      MYSQL_PASSWORD: 'pass'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - './data/mysql:/var/lib/mysql'
+      - './docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+
+  redis:
+    image: redis
+    volumes:
+      - ./data/redis:/data
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
+    command:
+      - /bin/sh
+      - -c
+      - redis-server --requirepass pass --user user1 \>pass on +@all ~* allchannels --user user1 \>pass on +@all ~* allchannels
